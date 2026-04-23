@@ -35,14 +35,10 @@ body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; background: va
 .day-num.sat { color: var(--sat); } .day-num.sun { color: var(--sun); }
 .day-num.today { background: var(--blue); color: #fff; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; }
 .lesson-slot { margin-bottom: 3px; border-radius: 4px; padding: 2px 5px; font-size: 10px; line-height: 1.4; }
-.lesson-slot.normal { background: var(--blue-lt); color: var(--blue); }
+.lesson-slot.normal { background: var(--blue-lt); color: var(--blue); font-weight: 500; }
 .lesson-slot.kyuko { background: var(--kyuko-bg); color: var(--kyuko-text); font-weight: 500; text-align: center; letter-spacing: 1px; }
 .lesson-time { font-size: 9px; color: var(--muted); margin-right: 3px; font-family: 'Poppins', sans-serif; }
-.legend-wrap { margin-top: 12px; background: #fff; border-radius: 10px; padding: 12px 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
-.legend-title { font-size: 11px; font-weight: 500; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.5px; }
-.legend-items { display: flex; flex-wrap: wrap; gap: 6px 16px; }
-.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text); }
-.legend-badge { font-size: 10px; background: var(--blue-lt); color: var(--blue); border-radius: 3px; padding: 1px 6px; }
+
 .sp-cal { display: block; }
 @media (min-width: 640px) { .sp-cal { display: none; } }
 .sp-week { background: #fff; border-radius: 10px; overflow: hidden; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
@@ -54,7 +50,7 @@ body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; background: va
 .sp-day-num { font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500; text-align: center; color: var(--text); padding: 3px 0 4px; border-bottom: 0.5px solid var(--border); margin-bottom: 3px; }
 .sp-day-num.sat { color: var(--sat); } .sp-day-num.sun { color: var(--sun); } .sp-day-num.today { color: var(--blue); }
 .sp-slot { font-size: 7.5px; border-radius: 3px; padding: 2px 3px; margin-bottom: 2px; line-height: 1.3; }
-.sp-slot.normal { background: var(--blue-lt); color: var(--blue); }
+.sp-slot.normal { background: var(--blue-lt); color: var(--blue); font-weight: 500; }
 .sp-slot.kyuko { background: var(--kyuko-bg); color: var(--kyuko-text); font-weight: 500; text-align: center; }
 .sp-slot-time { font-size: 6.5px; color: var(--muted); display: block; font-family: 'Poppins', sans-serif; }
 .sp-slot-name { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -80,13 +76,10 @@ body { font-family: 'Noto Sans JP', sans-serif; font-weight: 300; background: va
       </div>
       <div class="days-grid" id="pc-grid"></div>
     </div>
-    <div class="legend-wrap" id="pc-legend" style="display:none">
-      <div class="legend-title">凡例</div>
-      <div class="legend-items" id="pc-legend-items"></div>
-    </div>
+
   </div>
   <div class="sp-cal" id="sp-cal"></div>
-  <div class="page-footer">ご予約はSTORES予約・お問い合わせはLINEから</div>
+  <div class="page-footer">ご予約はSTORES・お問い合わせはLINEから</div>
 </div>
 <script>
 const EMBEDDED = {"2026-6-1":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-2":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-3":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-4":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-5":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-6":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-7":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-8":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-9":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-10":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-11":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-12":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-13":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-14":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-15":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-16":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-17":[{"time":"10:00","lesson":"ベーシック"},{"time":"15:00","lesson":"下半身"},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-18":[{"time":"10:00","lesson":"腹部"},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-19":[{"time":"10:00","lesson":"上半身"},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-20":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-21":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-22":[{"time":"10:00","lesson":"呼吸"},{"time":"15:00","lesson":"フット&ST"},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-23":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-24":[{"time":"10:00","lesson":"ベーシック"},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-25":[{"time":"10:00","lesson":"下半身"},{"time":"15:00","lesson":"腹部"},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-26":[{"time":"10:00","lesson":"上半身"},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-27":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-28":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-29":[{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}],"2026-6-30":[{"time":"10:00","lesson":"呼吸"},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""},{"time":"","lesson":""}]};
